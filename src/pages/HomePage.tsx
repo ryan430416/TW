@@ -27,10 +27,13 @@ export function HomePage() {
   return (
     <section className="home-layout" aria-label="私房景點探索">
       <div className="home-map-pane">
-        <RegionSelect
-          activeRegionId={activeRegionId}
-          onSelectRegion={handleSelectRegion}
-        />
+        <div className="map-toolbar">
+          <p className="map-heading">本島與離島</p>
+          <RegionSelect
+            activeRegionId={activeRegionId}
+            onSelectRegion={handleSelectRegion}
+          />
+        </div>
         <RegionMap
           activeRegionId={activeRegionId}
           hoverRegionId={hoverRegionId}
