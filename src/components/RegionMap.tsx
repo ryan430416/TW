@@ -86,11 +86,17 @@ export function RegionMap({
       <svg
         className="region-map-svg"
         viewBox={taiwanMap.viewBox}
-        role="img"
+        role="group"
         aria-label="台灣縣市互動地圖"
       >
+        <g className="map-geography" aria-hidden="true">
+          <path className="map-north-line" d="M600 125V60m-9 13 9-13 9 13" />
+          <text className="map-north-label" x="600" y="45" textAnchor="middle">N</text>
+          <text className="map-ocean-label" x="865" y="670">太平洋</text>
+          <text className="map-strait-label" x="160" y="950">台灣海峽</text>
+        </g>
         {taiwanMap.insetFrames.map((frame) => (
-          <g key={`frame-${frame.regionId}`} aria-hidden="true">
+          <g key={`frame-${frame.regionId}`} className="map-inset" data-region={frame.regionId} aria-hidden="true">
             <rect
               className="map-inset-frame"
               x={frame.x}
@@ -117,6 +123,7 @@ export function RegionMap({
               ]
                 .filter(Boolean)
                 .join(' ')}
+              data-region={pathItem.regionId}
               tabIndex={0}
               role="button"
               aria-pressed={isSelected}
@@ -145,6 +152,7 @@ export function RegionMap({
                 .join(' ')}
               tabIndex={0}
               role="button"
+              aria-pressed={isSelected}
               aria-label={`${marker.label}（${regionById[marker.regionId]?.nameZh ?? ''}）`}
               onMouseEnter={(event) => handleRegionEnter(marker.regionId, event)}
               onMouseMove={handleRegionMove}
@@ -177,11 +185,17 @@ export function RegionMap({
         </div>
       ) : null}
 
-      <p className="map-source-note">
-        地圖資料：{taiwanMap.source.agency} {taiwanMap.source.file}／
-        {taiwanMap.source.license}／衍生自 {taiwanMap.source.derivedFrom}。
-        {taiwanMap.source.note}
-      </p>
+      <div className="map-caption">
+        <span>輕觸板塊，探索地方風景</span>
+        <details className="map-source-note">
+          <summary>地圖來源與位置說明</summary>
+          <p>
+            地圖資料：{taiwanMap.source.agency} {taiwanMap.source.file}／
+            {taiwanMap.source.license}／衍生自 {taiwanMap.source.derivedFrom}。
+            {taiwanMap.source.note}
+          </p>
+        </details>
+      </div>
     </div>
   )
 }

@@ -4,20 +4,24 @@
   box-sizing: border-box;
 }
 
-html,
-body,
-#root {
-  min-height: 100%;
+html {
+  min-width: 320px;
+  background: var(--color-paper);
 }
 
 body {
   margin: 0;
-  font-family: var(--font-body);
   color: var(--color-ink);
-  background:
-    radial-gradient(circle at top left, #fffaf2 0%, transparent 40%),
-    linear-gradient(160deg, var(--color-paper) 0%, var(--color-paper-deep) 100%);
-  line-height: 1.55;
+  font-family: var(--font-body);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-paper);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%237a745d' opacity='.045' filter='url(%23paper)' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: #d9bba0;
+  color: var(--color-ink);
 }
 
 a {
@@ -25,8 +29,8 @@ a {
 }
 
 img {
-  max-width: 100%;
   display: block;
+  max-width: 100%;
 }
 
 button,
@@ -35,45 +39,82 @@ select {
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-focus);
-  outline-offset: 2px;
+  outline: 2px solid var(--color-focus);
+  outline-offset: 5px;
 }
 
 .app-shell {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  min-height: 100svh;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  border-inline: 1px solid var(--color-line);
 }
 
 .site-header {
-  padding: var(--header-pad-y) var(--space-5);
-  border-bottom: 1px solid color-mix(in srgb, var(--color-frame) 35%, transparent);
+  min-height: 88px;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.brand-seal {
+  display: grid;
+  place-content: center;
+  width: 40px;
+  height: 42px;
+  padding: 3px;
+  border: 1px solid var(--color-map-selected);
+  outline: 1px solid var(--color-map-selected);
+  outline-offset: -4px;
+  color: var(--color-map-selected);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  writing-mode: vertical-rl;
+  transform: rotate(-5deg);
 }
 
 .site-title {
-  margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(1.35rem, 2.2vw, 1.8rem);
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-size: clamp(17px, 1.7vw, 22px);
+  font-weight: 600;
+  letter-spacing: 0.08em;
 }
 
-.site-hint {
-  margin: var(--space-1) 0 0;
-  color: var(--color-ink-soft);
-  font-size: 0.95rem;
+.header-map-link {
+  flex-shrink: 0;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-ink);
+  padding-block: 4px;
 }
 
-.site-main {
-  flex: 1;
-  min-height: 0;
+.header-map-link span {
+  margin-left: 14px;
+}
+
+.header-map-link:hover {
+  color: var(--color-map-selected);
 }
 
 .page-spot,
 .page-not-found {
-  width: min(var(--page-max), 100%);
-  margin: 0 auto;
-  padding: var(--space-5);
+  padding: clamp(24px, 5vw, 72px);
+  margin-inline: auto;
+  max-width: 1280px;
 }
 
 .btn {
@@ -81,13 +122,15 @@ select {
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  padding: 0.55rem 1rem;
+  min-height: 44px;
+  padding: 0.65rem 1.15rem;
+  border: 1px solid var(--color-line);
   border-radius: var(--radius-sm);
-  border: 1px solid color-mix(in srgb, var(--color-ink) 18%, transparent);
   background: var(--color-card);
-  color: var(--color-ink);
   text-decoration: none;
   cursor: pointer;
+  font-size: 14px;
+  transition: background var(--motion-duration), color var(--motion-duration);
 }
 
 .btn:hover {
@@ -95,11 +138,43 @@ select {
 }
 
 .btn-primary {
-  background: var(--color-map);
-  border-color: var(--color-map);
-  color: #fff;
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-card);
 }
 
 .btn-primary:hover {
-  background: var(--color-map-hover);
+  background: #3f5e52;
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    min-height: 76px;
+    padding: 16px 20px;
+    gap: 12px;
+  }
+
+  .site-brand {
+    gap: 10px;
+  }
+
+  .brand-seal {
+    width: 32px;
+    height: 36px;
+    font-size: 13px;
+  }
+
+  .site-title {
+    font-size: 15px;
+    letter-spacing: 0.03em;
+  }
+
+  .header-map-link {
+    font-size: 11px;
+    letter-spacing: 0;
+  }
+
+  .header-map-link span {
+    margin-left: 3px;
+  }
 }

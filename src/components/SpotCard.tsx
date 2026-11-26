@@ -22,11 +22,12 @@ export function SpotCard({ spot, photo, regionQuery }: SpotCardProps) {
             loading="lazy"
           />
         ) : null}
-        <div>
-          <h3 className="spot-card-title">{spot.nameZh}</h3>
+        <div className="spot-card-copy">
           <p className="spot-card-town">{spot.townName}</p>
+          <h2 className="spot-card-title">{spot.nameZh}</h2>
           <p className="spot-card-intro">{spot.shortIntro}</p>
         </div>
+        <span className="spot-card-arrow" aria-hidden="true">↗</span>
       </Link>
     </li>
   )

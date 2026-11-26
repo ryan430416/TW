@@ -1,29 +1,94 @@
 .region-map {
   position: relative;
   width: 100%;
-  height: 100%;
-  min-height: 20rem;
 }
 
 .region-map-svg {
-  width: 100%;
-  height: 100%;
   display: block;
+  width: 100%;
+  height: clamp(520px, calc(100svh - 228px), 780px);
+  overflow: visible;
+}
+
+.map-geography {
+  pointer-events: none;
+}
+
+.map-north-line {
+  fill: none;
+  stroke: var(--color-ink-soft);
+  stroke-width: 1.5;
+}
+
+.map-north-label {
+  fill: var(--color-ink-soft);
+  font-family: Georgia, serif;
+  font-size: 18px;
+}
+
+.map-ocean-label,
+.map-strait-label {
+  fill: #87988f;
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: 0.4em;
+  writing-mode: vertical-rl;
+}
+
+.map-strait-label {
+  font-size: 19px;
 }
 
 .map-inset-frame {
-  fill: color-mix(in srgb, var(--color-card) 55%, transparent);
-  stroke: var(--color-frame);
-  stroke-width: 1.5;
-  rx: 10;
+  fill: rgb(246 243 234 / 40%);
+  stroke: #a6b09f;
+  stroke-width: 1;
+  stroke-dasharray: 5 5;
+  rx: 1;
 }
 
 .map-inset-label {
-  fill: var(--color-ink-soft);
-  font-family: var(--font-body);
-  font-size: 18px;
+  fill: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 1px;
   pointer-events: none;
 }
+
+/* Keep the offshore inset frames apart while retaining the source geometry. */
+.map-inset[data-region='lienchiang'],
+.region-group[data-region='lienchiang'] {
+  transform: translate(-130px, 30px);
+}
+
+.map-inset[data-region='kinmen'],
+.region-group[data-region='kinmen'] {
+  transform: translateY(150px);
+}
+
+/* Mineral, tea, clay and sea tones keep every county individually legible. */
+.region-group[data-region='keelung'] { --region-color: #d0af73; }
+.region-group[data-region='taipei'] { --region-color: #be8170; }
+.region-group[data-region='newtaipei'] { --region-color: #8caa9c; }
+.region-group[data-region='taoyuan'] { --region-color: #d4be8b; }
+.region-group[data-region='hsinchu_city'] { --region-color: #b78065; }
+.region-group[data-region='hsinchu_county'] { --region-color: #9eae8b; }
+.region-group[data-region='miaoli'] { --region-color: #c3c39a; }
+.region-group[data-region='taichung'] { --region-color: #7d9f95; }
+.region-group[data-region='changhua'] { --region-color: #c69c77; }
+.region-group[data-region='nantou'] { --region-color: #aab58d; }
+.region-group[data-region='yunlin'] { --region-color: #c8b77a; }
+.region-group[data-region='chiayi_city'] { --region-color: #a16d55; }
+.region-group[data-region='chiayi_county'] { --region-color: #9fab8a; }
+.region-group[data-region='tainan'] { --region-color: #c28c72; }
+.region-group[data-region='kaohsiung'] { --region-color: #cbbb8f; }
+.region-group[data-region='pingtung'] { --region-color: #8aa69a; }
+.region-group[data-region='yilan'] { --region-color: #bdc79c; }
+.region-group[data-region='hualien'] { --region-color: #82a5a3; }
+.region-group[data-region='taitung'] { --region-color: #a5bda9; }
+.region-group[data-region='penghu'] { --region-color: #73989e; }
+.region-group[data-region='kinmen'] { --region-color: #bd926c; }
+.region-group[data-region='lienchiang'] { --region-color: #9eae91; }
 
 .region-group {
   outline: none;
@@ -38,9 +103,10 @@
 }
 
 .region-shape {
-  fill: var(--color-map);
+  fill: var(--region-color, var(--color-map));
   stroke: var(--color-map-stroke);
-  stroke-width: 1.2;
+  stroke-width: 2;
+  stroke-linejoin: round;
   pointer-events: none;
   transform-box: fill-box;
   transform-origin: center;
@@ -52,47 +118,52 @@
 
 .region-group.is-hovered .region-shape,
 .region-group:focus-visible .region-shape {
-  fill: var(--color-map-hover);
+  fill: color-mix(in srgb, var(--region-color) 82%, var(--color-ink));
   transform: translateY(var(--map-float));
   filter: var(--map-float-shadow);
+  stroke: var(--color-card);
 }
 
 .region-group.is-selected .region-shape {
   fill: var(--color-map-selected);
+  transform: translateY(var(--map-float));
+  filter: var(--map-float-shadow);
 }
 
 .region-group.is-selected.is-hovered .region-shape,
 .region-group.is-selected:focus-visible .region-shape {
   fill: var(--color-map-selected-deep);
-  transform: translateY(var(--map-float));
-  filter: var(--map-float-shadow);
 }
 
 .region-group:focus-visible .region-hit {
   stroke: var(--color-focus);
-  stroke-opacity: 0.55;
+  stroke-opacity: 0.7;
+  stroke-width: 5;
 }
 
 .map-hover-label {
   position: absolute;
   z-index: 2;
-  transform: translate(-50%, calc(-100% - 0.5rem));
-  padding: 0.25rem 0.55rem;
-  border-radius: var(--radius-sm);
-  background: var(--color-ink);
-  color: #fff;
-  font-size: 0.85rem;
+  transform: translate(-50%, calc(-100% - 14px));
+  padding: 5px 12px;
+  border: 1px solid var(--color-line);
+  background: var(--color-card);
+  color: var(--color-ink);
+  box-shadow: 0 4px 12px var(--color-shadow);
+  font-size: 12px;
+  letter-spacing: 0.1em;
   pointer-events: none;
   white-space: nowrap;
 }
 
 .island-marker {
   cursor: pointer;
+  outline: none;
 }
 
 .island-marker-dot {
-  fill: var(--color-map-selected);
-  stroke: #fff;
+  fill: #73989e;
+  stroke: var(--color-card);
   stroke-width: 2;
   pointer-events: none;
 }
@@ -104,22 +175,58 @@
 
 .island-marker-label {
   fill: var(--color-ink);
-  font-family: var(--font-body);
-  font-size: 16px;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 21px;
   paint-order: stroke;
   stroke: var(--color-paper);
   stroke-width: 4px;
   pointer-events: none;
 }
 
-.island-marker.is-selected .island-marker-dot {
-  fill: var(--color-map-selected-deep);
+.island-marker.is-selected .island-marker-dot,
+.island-marker:hover .island-marker-dot {
+  fill: var(--color-map-selected);
+  r: 8;
 }
 
-.map-source-note {
-  margin: var(--space-2) 0 0;
-  font-size: 0.72rem;
+.island-marker:focus-visible .island-marker-hit {
+  stroke: var(--color-focus);
+  stroke-width: 2;
+}
+
+.map-caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-line);
   color: var(--color-ink-soft);
-  line-height: 1.4;
+  font-size: 10px;
+  letter-spacing: 0.03em;
+}
+
+.map-source-note summary {
+  cursor: pointer;
+  text-underline-offset: 4px;
+}
+
+.map-source-note p {
+  max-width: 48em;
+  line-height: 1.9;
+}
+
+@media (max-width: 900px) {
+  .region-map-svg {
+    height: clamp(500px, calc(100svh - 230px), 680px);
+  }
+}
+
+@media (max-width: 680px) {
+  .region-map-svg {
+    height: auto;
+    aspect-ratio: 1000 / 1311.22;
+    max-height: 620px;
+  }
 }

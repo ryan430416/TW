@@ -1,35 +1,41 @@
 .spot-detail-header {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3);
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--space-5);
+  gap: 24px;
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--color-line);
 }
 
 .spot-detail-title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-size: clamp(28px, 3.5vw, 46px);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
 }
 
 .spot-detail-place {
-  margin: var(--space-2) 0 0;
-  color: var(--color-ink-soft);
+  margin: 14px 0 0;
+  color: var(--color-map-selected);
+  font-size: 13px;
+  letter-spacing: 0.1em;
 }
 
 .spot-detail-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: var(--space-5);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(28px, 5vw, 64px);
 }
 
 .spot-photo-frame {
-  margin: 0;
+  margin: 0 0 32px;
+  padding: 10px;
+  border: 1px solid var(--color-line);
   background: var(--color-card);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--color-frame) 25%, transparent);
 }
 
 .spot-photo-frame img {
@@ -40,53 +46,68 @@
 }
 
 .spot-photo-frame figcaption {
-  padding: var(--space-3);
-  font-size: 0.85rem;
+  padding-top: 10px;
   color: var(--color-ink-soft);
+  font-size: 11px;
 }
 
 .spot-section {
-  margin-bottom: var(--space-4);
+  margin-bottom: 32px;
 }
 
 .spot-section h2 {
-  margin: 0 0 var(--space-2);
-  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 16px;
   font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.spot-section h2::before {
+  content: '';
+  width: 3px;
+  height: 18px;
+  background: var(--color-map-selected);
 }
 
 .spot-section p {
   margin: 0;
+  color: var(--color-ink-soft);
+  font-size: 14px;
+  line-height: 2;
 }
 
 .spot-meta {
-  margin-top: var(--space-5);
-  padding-top: var(--space-4);
-  border-top: 1px solid color-mix(in srgb, var(--color-frame) 30%, transparent);
-  font-size: 0.85rem;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-line);
   color: var(--color-ink-soft);
+  font-size: 11px;
+  line-height: 2;
 }
 
 .spot-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3);
-  margin-top: var(--space-5);
+  gap: 12px;
+  margin-top: 28px;
 }
 
 .not-found-box {
-  padding: var(--space-5);
-  border-radius: var(--radius-md);
+  padding: clamp(24px, 5vw, 56px);
+  border: 1px solid var(--color-line);
   background: var(--color-card);
-  border: 1px solid color-mix(in srgb, var(--color-frame) 28%, transparent);
 }
 
 .not-found-box h1 {
   margin-top: 0;
   font-family: var(--font-display);
+  font-weight: 600;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 760px) {
   .spot-detail-grid {
     grid-template-columns: 1fr;
   }
