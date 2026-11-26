@@ -1,0 +1,125 @@
+.region-map {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 20rem;
+}
+
+.region-map-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.map-inset-frame {
+  fill: color-mix(in srgb, var(--color-card) 55%, transparent);
+  stroke: var(--color-frame);
+  stroke-width: 1.5;
+  rx: 10;
+}
+
+.map-inset-label {
+  fill: var(--color-ink-soft);
+  font-family: var(--font-body);
+  font-size: 18px;
+  pointer-events: none;
+}
+
+.region-group {
+  outline: none;
+}
+
+.region-hit {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 8;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.region-shape {
+  fill: var(--color-map);
+  stroke: var(--color-map-stroke);
+  stroke-width: 1.2;
+  pointer-events: none;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    fill var(--motion-duration) ease,
+    transform var(--motion-duration) ease,
+    filter var(--motion-duration) ease;
+}
+
+.region-group.is-hovered .region-shape,
+.region-group:focus-visible .region-shape {
+  fill: var(--color-map-hover);
+  transform: translateY(var(--map-float));
+  filter: var(--map-float-shadow);
+}
+
+.region-group.is-selected .region-shape {
+  fill: var(--color-map-selected);
+}
+
+.region-group.is-selected.is-hovered .region-shape,
+.region-group.is-selected:focus-visible .region-shape {
+  fill: var(--color-map-selected-deep);
+  transform: translateY(var(--map-float));
+  filter: var(--map-float-shadow);
+}
+
+.region-group:focus-visible .region-hit {
+  stroke: var(--color-focus);
+  stroke-opacity: 0.55;
+}
+
+.map-hover-label {
+  position: absolute;
+  z-index: 2;
+  transform: translate(-50%, calc(-100% - 0.5rem));
+  padding: 0.25rem 0.55rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-ink);
+  color: #fff;
+  font-size: 0.85rem;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.island-marker {
+  cursor: pointer;
+}
+
+.island-marker-dot {
+  fill: var(--color-map-selected);
+  stroke: #fff;
+  stroke-width: 2;
+  pointer-events: none;
+}
+
+.island-marker-hit {
+  fill: transparent;
+  pointer-events: all;
+}
+
+.island-marker-label {
+  fill: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 700;
+  paint-order: stroke;
+  stroke: var(--color-paper);
+  stroke-width: 4px;
+  pointer-events: none;
+}
+
+.island-marker.is-selected .island-marker-dot {
+  fill: var(--color-map-selected-deep);
+}
+
+.map-source-note {
+  margin: var(--space-2) 0 0;
+  font-size: 0.72rem;
+  color: var(--color-ink-soft);
+  line-height: 1.4;
+}

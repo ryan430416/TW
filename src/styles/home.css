@@ -1,0 +1,139 @@
+.home-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 60%) minmax(0, 40%);
+  min-height: calc(100vh - 5.2rem);
+}
+
+.home-map-pane,
+.home-list-pane {
+  min-height: 0;
+}
+
+.home-map-pane {
+  padding: var(--space-4);
+  border-right: 1px solid color-mix(in srgb, var(--color-frame) 30%, transparent);
+}
+
+.home-list-pane {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4) var(--space-5);
+  background: color-mix(in srgb, var(--color-card) 70%, transparent);
+}
+
+.region-select-bar {
+  display: none;
+  gap: var(--space-2);
+  align-items: center;
+  margin-bottom: var(--space-3);
+}
+
+.region-select-bar label {
+  font-size: 0.9rem;
+  color: var(--color-ink-soft);
+  white-space: nowrap;
+}
+
+.region-select-bar select {
+  flex: 1;
+  min-width: 0;
+  padding: 0.45rem 0.6rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid color-mix(in srgb, var(--color-ink) 20%, transparent);
+  background: var(--color-card);
+}
+
+.list-heading {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+}
+
+.list-meta {
+  margin: 0 0 var(--space-4);
+  color: var(--color-ink-soft);
+  font-size: 0.95rem;
+}
+
+.list-empty,
+.list-prompt {
+  margin: var(--space-4) 0;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-paper-deep);
+  color: var(--color-ink-soft);
+}
+
+.spot-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  overflow: auto;
+}
+
+.spot-card-link {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  background: var(--color-card);
+  border: 1px solid color-mix(in srgb, var(--color-frame) 25%, transparent);
+  transition: border-color var(--motion-duration) ease, box-shadow var(--motion-duration) ease;
+}
+
+.spot-card-link:hover {
+  border-color: color-mix(in srgb, var(--color-map-selected) 55%, transparent);
+  box-shadow: var(--shadow-soft);
+}
+
+.spot-card-link.is-no-photo {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.spot-card-thumb {
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  background: var(--color-paper-deep);
+}
+
+.spot-card-title {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.spot-card-town {
+  margin: 0.15rem 0;
+  color: var(--color-ink-soft);
+  font-size: 0.85rem;
+}
+
+.spot-card-intro {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--color-ink);
+}
+
+@media (max-width: 860px) {
+  .home-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(18rem, 1fr);
+    min-height: auto;
+  }
+
+  .home-map-pane {
+    border-right: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-frame) 30%, transparent);
+    min-height: 52vh;
+  }
+
+  .region-select-bar {
+    display: flex;
+  }
+}

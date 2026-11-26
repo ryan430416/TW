@@ -1,0 +1,54 @@
+:root {
+  /* 色彩：台灣地方採集手冊 */
+  --color-paper: #f7f3eb;
+  --color-paper-deep: #efe8dc;
+  --color-ink: #1f2a24;
+  --color-ink-soft: #4a5a52;
+  --color-map: #2f5d4a;
+  --color-map-hover: #244a3b;
+  --color-map-selected: #c45c26;
+  --color-map-selected-deep: #a3491c;
+  --color-map-stroke: #d9d0c1;
+  --color-frame: #8a7a62;
+  --color-focus: #1d6b4f;
+  --color-danger: #8b2e2e;
+  --color-card: #fffdf8;
+  --color-shadow: rgb(31 42 36 / 28%);
+
+  /* 字體 */
+  --font-display: "Iwanami Mincho", "Source Han Serif TC", "Noto Serif TC",
+    "Songti TC", serif;
+  --font-body: "Source Han Sans TC", "Noto Sans TC", "PingFang TC",
+    "Microsoft JhengHei", sans-serif;
+
+  /* 間距與圓角 */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --radius-sm: 0.35rem;
+  --radius-md: 0.75rem;
+  --shadow-soft: 0 0.4rem 1rem var(--color-shadow);
+  --map-float: -6px;
+  --map-float-shadow: drop-shadow(0 8px 10px var(--color-shadow));
+
+  /* 版面 */
+  --home-map-ratio: 0.6;
+  --page-max: 1200px;
+  --header-pad-y: 0.9rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --map-float: 0px;
+    --motion-duration: 0.01ms;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    --motion-duration: 160ms;
+  }
+}

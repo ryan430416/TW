@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480" role="img" aria-label="展示用插圖">
+  <rect width="640" height="480" fill="#d9e7ef"/>
+  <path d="M0 300 C120 260 220 320 320 290 C420 260 520 310 640 280 L640 480 L0 480 Z" fill="#2f5d4a"/>
+  <circle cx="480" cy="110" r="36" fill="#f7f3eb"/>
+  <text x="40" y="60" font-family="Georgia, serif" font-size="28" fill="#1f2a24">展示：港邊剪影</text>
+</svg>

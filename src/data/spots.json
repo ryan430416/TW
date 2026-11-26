@@ -1,0 +1,98 @@
+{
+  "regions": [
+    { "regionId": "keelung", "nameZh": "基隆市" },
+    { "regionId": "taipei", "nameZh": "臺北市" },
+    { "regionId": "newtaipei", "nameZh": "新北市" },
+    { "regionId": "taoyuan", "nameZh": "桃園市" },
+    { "regionId": "hsinchu_city", "nameZh": "新竹市" },
+    { "regionId": "hsinchu_county", "nameZh": "新竹縣" },
+    { "regionId": "miaoli", "nameZh": "苗栗縣" },
+    { "regionId": "taichung", "nameZh": "臺中市" },
+    { "regionId": "changhua", "nameZh": "彰化縣" },
+    { "regionId": "nantou", "nameZh": "南投縣" },
+    { "regionId": "yunlin", "nameZh": "雲林縣" },
+    { "regionId": "chiayi_city", "nameZh": "嘉義市" },
+    { "regionId": "chiayi_county", "nameZh": "嘉義縣" },
+    { "regionId": "tainan", "nameZh": "臺南市" },
+    { "regionId": "kaohsiung", "nameZh": "高雄市" },
+    { "regionId": "pingtung", "nameZh": "屏東縣" },
+    { "regionId": "yilan", "nameZh": "宜蘭縣" },
+    { "regionId": "hualien", "nameZh": "花蓮縣" },
+    { "regionId": "taitung", "nameZh": "臺東縣" },
+    { "regionId": "penghu", "nameZh": "澎湖縣" },
+    { "regionId": "kinmen", "nameZh": "金門縣" },
+    { "regionId": "lienchiang", "nameZh": "連江縣" }
+  ],
+  "spots": [
+    {
+      "spotId": "demo-taichung-papertrail",
+      "regionId": "taichung",
+      "townName": "西區",
+      "nameZh": "【展示】紙街轉角採集點",
+      "shortIntro": "這是第一版用來測試清單與詳情頁的虛構展示景點，不是真實開放場域。",
+      "viewHighlight": "可練習查看地區名稱、短介紹與返回縣市流程。",
+      "visitTip": "展示資料：請勿當成實際到訪建議或開放資訊。",
+      "latitude": 24.1477,
+      "longitude": 120.6736,
+      "sourceNote": "專案展示資料（虛構）",
+      "lastVerifiedOn": "2026-03-01",
+      "status": "published"
+    },
+    {
+      "spotId": "demo-taichung-riverside",
+      "regionId": "taichung",
+      "townName": "北屯區",
+      "nameZh": "【展示】河堤散步觀察點",
+      "shortIntro": "用於測試同一縣市多筆景點清單的展示資料。",
+      "viewHighlight": "清單頁可看到無照片時仍正常排版。",
+      "visitTip": "展示資料：未提供真實現場狀況。",
+      "sourceNote": "專案展示資料（虛構）",
+      "lastVerifiedOn": "2026-03-01",
+      "status": "published"
+    },
+    {
+      "spotId": "demo-penghu-harbor",
+      "regionId": "penghu",
+      "townName": "馬公市",
+      "nameZh": "【展示】港邊風向觀察點",
+      "shortIntro": "離島展示景點，用來確認澎湖放大框與選取狀態。",
+      "viewHighlight": "測試離島選取後右側清單是否更新。",
+      "visitTip": "展示資料：未描述實際登島或開放條件。",
+      "latitude": 23.5711,
+      "longitude": 119.5793,
+      "sourceNote": "專案展示資料（虛構）",
+      "lastVerifiedOn": "2026-03-01",
+      "status": "published"
+    },
+    {
+      "spotId": "demo-taitung-island-view",
+      "regionId": "taitung",
+      "townName": "成功鎮",
+      "nameZh": "【展示】東岸岬角望點",
+      "shortIntro": "用來測試點選綠島／蘭嶼標記後對應到臺東縣清單。",
+      "viewHighlight": "確認離島標記會帶出所屬縣市景點。",
+      "visitTip": "展示資料：不含真實交通或安全建議。",
+      "sourceNote": "專案展示資料（虛構）",
+      "lastVerifiedOn": "2026-03-01",
+      "status": "published"
+    }
+  ],
+  "photos": [
+    {
+      "photoId": "photo-demo-taichung-1",
+      "spotId": "demo-taichung-papertrail",
+      "imagePath": "/photos/demo-paper.svg",
+      "altText": "展示用插圖：紙本採集手冊封面風格",
+      "credit": "專案展示圖",
+      "license": "CC0"
+    },
+    {
+      "photoId": "photo-demo-penghu-1",
+      "spotId": "demo-penghu-harbor",
+      "imagePath": "/photos/demo-harbor.svg",
+      "altText": "展示用插圖：港邊剪影",
+      "credit": "專案展示圖",
+      "license": "CC0"
+    }
+  ]
+}
